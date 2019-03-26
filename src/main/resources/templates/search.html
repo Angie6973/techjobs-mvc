@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
+
 </head>
 <body>
+
 
 <div th:replace="fragments :: page-header"></div>
 
@@ -22,6 +24,7 @@
                         th:value="${column.key}"
                         th:checked="${column.key == 'all'}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
+
             </span>
 
         </p>
@@ -36,12 +39,28 @@
 
     <hr />
 
-    <div th:if="${jobs}">
-        <div th:replace="fragments :: results"></div>
-    </div>
 
-    <!-- TODO #2 - Loop over jobs map to display all job fields -->
 
+
+
+
+
+        <div th:if= "${jobs} and ${jobs.size()}">
+            <h3 th:text="${jobs.size() + ' Result(s)'}"></h3>
+     <table class="job-listing" th:each="job : ${jobs}">
+
+
+    <tr th:each="field : ${job}">
+
+
+        <td th:text="${field.key}"></td>
+        <td th:text="${field.value}"></td>
+
+    </tr>
+
+    </table>
+
+</div>
 </div>
 
 </body>
