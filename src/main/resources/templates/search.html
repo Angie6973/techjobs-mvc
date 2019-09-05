@@ -45,10 +45,15 @@
 
 
 
-    <h3 th:text="${jobs.size() + ' Result(s)'}"></h3>
-        <div th:if= "${jobs} and ${jobs.size()}">
-     <table class="job-listing" th:each="job : ${jobs}">
 
+
+
+    <div th:fragment=" search-list">
+        <div th:if= "${ jobs} and ${jobs.size() }">
+
+             <h3> <div th:text = "${jobs.size() + ' Result(s)'}"/></h3>
+
+        <table class="job-listing" th:each="job : ${jobs}">
 
     <tr th:each="field : ${job}">
 
@@ -58,10 +63,12 @@
 
     </tr>
 
-    </table>
+
+        </table>
+
 
 </div>
 </div>
-
+</div>
 </body>
 </html>

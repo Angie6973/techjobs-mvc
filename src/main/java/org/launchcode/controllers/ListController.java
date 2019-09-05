@@ -27,7 +27,7 @@ public class ListController {
         columnChoices.put("all", "All");
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "")
     public String list(Model model) {
 
         model.addAttribute("columns", columnChoices);
@@ -35,7 +35,7 @@ public class ListController {
         return "list";
     }
 
-    @RequestMapping(value = "values", method =RequestMethod.POST)
+    @RequestMapping(value = "values")
     public String listColumnValues(Model model, @RequestParam String column) {
 
         if (column.equals("all")) {
